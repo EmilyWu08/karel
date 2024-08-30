@@ -1,0 +1,18 @@
+void fetchTheStars() {
+    turnLeft();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    pickBeeper();
+    turnRight();
+    pickTheStars();
+}
+void pickTheStars() {
+    while (!leftIsClear()) {
+        moveForward();
+        if (onBeeper()) {
+            pickBeeper();
+        }
+        
+    }
+}
