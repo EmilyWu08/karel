@@ -1,4 +1,4 @@
-void walkTheLabyrinth() {
+void solveTheMaze() {
     while(!onBeeper()) {
         if(frontIsClear()) {
             moveForward();
@@ -16,4 +16,5 @@ void walkTheLabyrinth() {
             moveForward();
         }
     }
+    pickBeeper();
 }
