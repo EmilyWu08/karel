@@ -1,0 +1,55 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+*/
+
+void quantizeBits()
+{
+    // your code here
+    repeat(10) {
+        turnLeft();
+        repeat (5) {
+            moveForward();
+        }
+        if (beeperAhead()) {
+            fill();
+        }
+        else {
+            drop();
+        }
+        if (leftIsClear()) {
+            turnLeft();
+            moveForward();
+        }
+    }
+}
+void fill() {
+    while (beeperAhead()) {
+        moveForward();
+        while (frontIsClear() && ! beeperAhead()) {
+            moveForward();
+            dropBeeper();
+        }
+    }
+    turnAround();
+    repeat(9) {
+        moveForward();
+    }
+}
+
+
+
+void drop() {
+    turnAround();
+    while (frontIsClear()) {
+        while(onBeeper()) {
+            pickBeeper();
+        }
+        moveForward();
+    }
+    pickBeeper();
+}
