@@ -8,59 +8,44 @@ F6 = dropBeeper();
 */
 
 void fetchTheStars() {
-    turnLeft();
-    top();
-    top();
-    bottom();
-    top();
-    bottom();
-    repeat(4) {
-        middle();
+    repeat(10) {
+        turnLeft();
+        repeat(5) {
+            moveForward();
+        }
+        if (onBeeper()) {
+            pickBeeper();
+            turnAround();
+            repeat(5) {
+                moveForward();
+            }
+            
+        }
+        else {
+            moveForward();
+            if (onBeeper()) {
+                pickBeeper();
+                turnAround();
+                repeat(6) {
+                    moveForward();
+                }
+            }
+            else {
+                moveForward();
+                if (onBeeper()) {
+                    pickBeeper();
+                    turnAround();
+                    repeat(7) {
+                        moveForward();
+                    }
+                }
+            }
+        }
+        dropBeeper();
+        turnLeft();
+        if (frontIsClear()) {
+            moveForward();
+            
+        }
     }
-    bottom();
-    
-    
-    
-}
-void top() {
-    repeat(7) {
-        moveForward();
-    }
-    pickBeeper();
-    turnAround();
-    repeat(7) {
-        moveForward();
-    }
-    dropBeeper();
-    turnLeft();
-    moveForward();
-    turnLeft();
-}
-void middle() {
-    repeat(6) {
-        moveForward();
-    }
-    pickBeeper();
-    turnAround();
-    repeat(6) {
-        moveForward();
-    }
-    dropBeeper();
-    turnLeft();
-    moveForward();
-    turnLeft();
-}
-void bottom() {
-    repeat(5) {
-        moveForward();
-    }
-    pickBeeper();
-    turnAround();
-    repeat(5) {
-        moveForward();
-    }
-    dropBeeper();
-    turnLeft();
-    moveForward();
-    turnLeft();
 }
