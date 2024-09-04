@@ -1,0 +1,31 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+*/
+
+void layAndRemoveTiles() {
+    while (!beeperAhead()) {
+        while (frontIsClear() && !beeperAhead()) {
+            dropBeeper();
+            moveForward();
+        }
+        turnLeft();
+    }
+    dropBeeper();
+    moveForward();
+    turnAround();
+    while (beeperAhead()) {
+        while(beeperAhead() && frontIsClear()) {
+            moveForward();
+            pickBeeper();
+            turnRight();
+        }
+        if (!beeperAhead()) {
+            turnLeft();
+        }
+    }
+}
